@@ -18,6 +18,7 @@ public class Payment {
     @ApplicationModuleListener
     public void on(CheckoutFinished event) {
         log.info("Processing payment for cart {}", event.getCartId());
+        // add payment logic here...
         publisher.publishEvent(new PaymentSucceeded(event.getCartId()));
     }
 }

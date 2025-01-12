@@ -8,5 +8,5 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 public class PaymentMethodsResponse {
-    private final List<PaymentType> payments;
+    private final List<String> payments;
 }
