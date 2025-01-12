@@ -1,6 +1,6 @@
 package com.petstore.ecommerce.ordermanagement.application;
 
-import com.petstore.ecommerce.ordermanagement.OrderPlacedEvent;
+import com.petstore.ecommerce.ordermanagement.OrderPlaced;
 import com.petstore.ecommerce.payment.PaymentSucceeded;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,6 @@ public class OrderManagement {
     public void on(PaymentSucceeded event) {
       log.info("Placing order for cart {}", event.getCartId());
 
-      publisher.publishEvent(new OrderPlacedEvent());
+      publisher.publishEvent(new OrderPlaced());
     }
 }

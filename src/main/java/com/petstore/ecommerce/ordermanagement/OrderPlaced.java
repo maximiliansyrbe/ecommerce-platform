@@ -1,4 +1,4 @@
 package com.petstore.ecommerce.ordermanagement;
 
-public class OrderPlacedEvent {
+public class OrderPlaced {
 }
