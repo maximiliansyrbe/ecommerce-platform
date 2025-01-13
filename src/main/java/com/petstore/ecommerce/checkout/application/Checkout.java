@@ -1,9 +1,8 @@
 package com.petstore.ecommerce.checkout.application;
 
-import com.petstore.ecommerce.checkout.CheckoutFinished;
 import com.petstore.ecommerce.checkout.domain.PaymentMethod;
+import com.petstore.ecommerce.payment.Payment;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +12,8 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class Checkout {
-  private final ApplicationEventPublisher publisher;
+
+  private final Payment payment;
 
   @Transactional(readOnly = true)
   public List<PaymentMethod> getPaymentMethods(String salesOrg) {
@@ -26,6 +26,6 @@ public class Checkout {
     // 2. validate cart
     // 3. set status to CHECKOUT_FINISHED
     // 4. save cart
-    this.publisher.publishEvent(new CheckoutFinished(cartId));
+    payment.startTransaction(cartId);
   }
 }
