@@ -21,11 +21,11 @@ public class Checkout {
   }
 
   @Transactional
-  public void finishCheckout(UUID cartId) {
+  public void invokePayment(UUID cartId) {
     // 1. get Cart
     // 2. validate cart
-    // 3. set status to CHECKOUT_FINISHED
-    // 4. save cart
     payment.startTransaction(cartId);
+    // 4. set status to PAID
+    // 5. save cart
   }
 }

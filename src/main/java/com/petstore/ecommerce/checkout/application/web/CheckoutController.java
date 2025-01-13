@@ -52,8 +52,8 @@ public class CheckoutController {
 
   @PostMapping(path = "cart/{cartId}/pay",
           produces = "application/json")
-  public void finishCheckout(@PathVariable UUID cartId) {
-    checkout.finishCheckout(cartId);
+  public void invokePayment(@PathVariable UUID cartId) {
+    checkout.invokePayment(cartId);
   }
 
   private PaymentMethodsResponse toPaymentMethodsResponse(List<PaymentMethod> paymentMethods) {
